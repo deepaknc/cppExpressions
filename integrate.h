@@ -2,17 +2,9 @@
 #include<memory>
 #include<cassert>
 
-struct Square
-{
-    double operator()(double x) const
-    {
-        return x*x; 
-    }
-};
-
 // template to calculate integral of a function.
 template <typename Func>
-double integrate(Func f, double low, double high, double epsilon = 0.0000001)
+double integrate(Func& f, double low, double high, double epsilon = 0.00001)
 {
     assert(low <= high);
     double areaUnderCurveLB = 0, areaUnderCurveUpperBound = 0;
@@ -25,10 +17,4 @@ double integrate(Func f, double low, double high, double epsilon = 0.0000001)
     }
 
     return areaUnderCurveLB; 
-}
-
-int main()
-{
-    auto f = Square();
-    std::cout << integrate(f, 0, 4);
 }
