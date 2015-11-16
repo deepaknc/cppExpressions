@@ -20,5 +20,6 @@ int main()
 
     std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() <<std::endl;
     
+    std::cout << "Object Counter" << Expression::count << std::endl;
     return 0;
 }

@@ -1,8 +1,9 @@
 #include<iostream>
 #include <cmath>
 #include <memory>
+#include "counter.h"
 
-class Expression
+class Expression : public Counter<Expression>
 {
 public:
     virtual double operator()(double x) const = 0;
@@ -14,7 +15,7 @@ public:
 
 // The tutorial uses a refcounter to manage destruction, but we will use a 
 // shared_ptr
-struct Constant : public Expression
+struct Constant : public Expression, public Counter<Constant>
 {
     Constant(const double d) : _d(d) 
     {
@@ -48,7 +49,7 @@ struct Constant : public Expression
     double _d;
 };
 
-struct Variable : public Expression
+struct Variable : public Expression, public Counter<Variable>
 {
     Variable()
     {
@@ -89,7 +90,7 @@ struct Mult
 };
 
 template <typename Op>
-struct ComplexExpression : public Expression
+struct ComplexExpression : public Expression, public Counter<ComplexExpression<Op>>
 {
     ComplexExpression(
         std::shared_ptr<Expression> left, 
