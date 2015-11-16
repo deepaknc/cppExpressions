@@ -177,6 +177,7 @@ std::shared_ptr<Expression> operator + (
                 std::make_shared<Constant>(right))
             );
 }
+
 // operator overloads on Expressions
 std::shared_ptr<Expression> operator + (
         const std::shared_ptr<Expression>& left, 

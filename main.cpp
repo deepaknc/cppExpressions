@@ -1,5 +1,6 @@
 #include "integrate.h"
-#include "expr.h"
+#include "inheritanceExpressions.h"
+#include "templatedExpressions.h"
 
 int main()
 {
